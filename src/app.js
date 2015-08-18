@@ -41,7 +41,22 @@ var HelloWorldLayer = cc.Layer.extend({
         role.setPosition(size.width / 2, size.height / 2);
         this.addChild(role);
 
-        role.runAction(new cc.Shaky3D(10, cc.size(50, 50), 5, false));
+        //role.runAction(new cc.ShakyTiles3D(10, cc.size(50, 50), 5, false));
+
+        //role.runAction(new cc.ShuffleTiles(1, cc.size(50, 50), 25))
+
+        /*
+         var shaky = new cc.ShakyTiles3D(1, cc.size(50, 50), 5, false);
+         var shuffle = new cc.ShuffleTiles(0.5, cc.size(50, 50), 25);
+         role.runAction(new cc.Sequence(shaky, shuffle));
+         */
+
+        //role.runAction(new cc.TurnOffTiles(1, cc.size(50, 50), 25));
+        //role.runAction(new cc.Waves3D(2, cc.size(15, 10), 5, 40));
+
+        var w1 = new cc.Waves3D(2, cc.size(15, 10), 5, 40);
+        var w2 = new cc.Waves3D(2, cc.size(15, 10), 0, 0);
+        role.runAction(new cc.Sequence(w1, w2));
 
         return true;
     }
