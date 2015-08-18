@@ -36,10 +36,10 @@ var HelloWorldLayer = cc.Layer.extend({
          cc.log("PLAY COMPLETE");
          })));*/
 
-        var role = new cc.NodeGrid();
-        role.addChild(new cc.Sprite(res.role_jpg));
-        role.setPosition(size.width / 2, size.height / 2);
-        this.addChild(role);
+        //var role = new cc.NodeGrid();
+        //role.addChild(new cc.Sprite(res.role_jpg));
+        //role.setPosition(size.width / 2, size.height / 2);
+        //this.addChild(role);
 
         //role.runAction(new cc.ShakyTiles3D(10, cc.size(50, 50), 5, false));
 
@@ -54,9 +54,30 @@ var HelloWorldLayer = cc.Layer.extend({
         //role.runAction(new cc.TurnOffTiles(1, cc.size(50, 50), 25));
         //role.runAction(new cc.Waves3D(2, cc.size(15, 10), 5, 40));
 
-        var w1 = new cc.Waves3D(2, cc.size(15, 10), 5, 40);
-        var w2 = new cc.Waves3D(2, cc.size(15, 10), 0, 0);
-        role.runAction(new cc.Sequence(w1, w2));
+        //var w1 = new cc.Waves3D(2, cc.size(15, 10), 5, 40);
+        //var w2 = new cc.Waves3D(2, cc.size(15, 10), 0, 0);
+        //role.runAction(new cc.Sequence(w1, w2));
+
+        var background = new cc.Sprite(res.a_jpg);
+        background.setPosition(size.width / 2, size.height / 2);
+        this.addChild(background);
+
+        this.schedule(function () {
+
+            //New scene
+            var newScene = new cc.Scene();
+            var newBackground = new cc.Sprite(res.b_jpg);
+            newBackground.setPosition(size.width/2, size.height/2);
+            newScene.addChild(newBackground);
+
+            //cc.director.replaceScene(newScene);
+
+            var transition = new cc.TransitionSplitRows(1, newScene);
+            cc.director.replaceScene(transition);
+
+
+        }, 2);
+
 
         return true;
     }
