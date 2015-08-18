@@ -20,9 +20,17 @@ var HelloWorldLayer = cc.Layer.extend({
         //role.runAction(new cc.MoveTo(2, cc.p(size.width - 100, size.height / 2)));
         //role.runAction(new cc.moveBy(2, cc.p(500, 0)));
 
-        var move1 = new cc.MoveTo(2, cc.p(size.width - 100, size.height / 2));
-        var move2 = new cc.moveBy(2, cc.p(-500, 0));
-        role.runAction(new cc.Sequence(move1, move2));
+        /*var move1 = new cc.MoveTo(2, cc.p(size.width - 100, size.height / 2));
+         var move2 = new cc.moveBy(2, cc.p(-500, 0));
+         role.runAction(new cc.Sequence(move1, move2));*/
+
+        /*var move1 = new cc.moveBy(2, cc.p(500, 0));
+         var move2 = move1.reverse();
+         role.runAction(new cc.Sequence(move1, move2));*/
+
+        var move = new cc.MoveBy(2, cc.p(500, 0));
+        var scale = new cc.ScaleTo(2, 1);
+        role.runAction(new cc.Spawn(move, scale));
 
         return true;
     }
